@@ -11,10 +11,18 @@ namespace PlayerCards {
                 Player player = new Player(tbPlayerFirstName.Text, tbPlayerLastName.Text, number);
                 // Unos u listu se vrši pomoću Items kolekcije i metode Add
                 lbPlayers.Items.Add(player);
+                CleanTextBoxes();
             }
             catch (Exception ex) {
                 MessageBox.Show($"Greška prilikom unosa igrača:\n{ex.Message}");
             }
+        }
+
+        private void CleanTextBoxes() {
+            tbPlayerFirstName.Text = string.Empty;
+            tbPlayerLastName.Text = string.Empty;
+            tbPlayerNumber.Text = string.Empty;
+            tbPlayerFirstName.Focus();
         }
     }
 }
