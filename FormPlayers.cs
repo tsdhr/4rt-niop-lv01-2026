@@ -5,15 +5,16 @@ namespace PlayerCards {
         }
 
         private void btnAddPlayer_Click(object sender, EventArgs e) {
-            // Instanciraj objekt igrača prema podacima u texboxovima
-            // i dodaj u listu igrača
-
-            // Svojstvo tbPlayerFirstName.Text sadrži ime igrača
-
-            // Unos u listu se vrši pomoću Items kolekcije i metode Add
-            
-            // Mi unosimo objekte u listu, ne stringove kao u sljedećem primjeru:
-            lbPlayers.Items.Add("Luka Paljetko - 12");
+            try {
+                var number = int.Parse(tbPlayerNumber.Text);
+                // Instanciraj objekt igrača prema podacima u texboxovima
+                Player player = new Player(tbPlayerFirstName.Text, tbPlayerLastName.Text, number);
+                // Unos u listu se vrši pomoću Items kolekcije i metode Add
+                lbPlayers.Items.Add(player);
+            }
+            catch (Exception ex) {
+                MessageBox.Show($"Greška prilikom unosa igrača:\n{ex.Message}");
+            }
         }
     }
 }
